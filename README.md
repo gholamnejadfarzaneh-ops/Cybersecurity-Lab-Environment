@@ -24,3 +24,5 @@ This project demonstrates the implementation of a secure web architecture hosted
 - [ ] Active Directory (AD) Lab: Windows Server 2022 Implementation
 - [ ] Identity & Access Management (IAM): GPO Hardening & Audit
 - [ ] Centralized Logging: Prometheus & Grafana Integration
+## System Administration Best Practices
+Privilege Management: > Access to the /var/www/html directory was reconfigured from root:root to user:user. This mitigates the risk of Privilege Escalation vulnerabilities. By avoiding the use of the su (Switch User) command and utilizing sudo only when necessary, the lab adheres to the Principle of Least Privilege (PoLP).
