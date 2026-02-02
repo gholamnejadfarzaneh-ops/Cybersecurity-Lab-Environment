@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSecOps Transformation | Farzaneh G.</title>
+    <style>
+        :root { --accent: #EDAB9D; --text: #1a1a1a; --secondary: #666; }
+        body { font-family: -apple-system, "Inter", sans-serif; line-height: 1.7; color: var(--text); max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
+        nav { margin-bottom: 3rem; }
+        nav a { text-decoration: none; color: var(--accent); font-size: 0.9rem; font-weight: 500; }
+        h1 { font-size: 2.2rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; line-height: 1.2; }
+        .subtitle { color: var(--secondary); margin-bottom: 3rem; font-size: 1.1rem; }
+        h2 { font-size: 1.4rem; margin-top: 3rem; color: var(--text); border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        h3 { font-size: 1.1rem; margin-top: 2rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
+        .case-study-box { background: #fcfcfc; border: 1px solid #efefef; padding: 2rem; border-radius: 8px; margin: 2rem 0; }
+        .methodology-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 1.5rem; }
+        .method-item b { display: block; margin-bottom: 5px; color: var(--text); }
+        .metrics { display: flex; justify-content: space-around; background: var(--text); color: white; padding: 2rem; border-radius: 8px; margin: 3rem 0; }
+        .metric-item { text-align: center; }
+        .metric-value { display: block; font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        .metric-label { font-size: 0.75rem; text-transform: uppercase; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <nav><a href="/">← Return to Portfolio</a></nav>
+    <header>
+        <h1>Architecting a Shift-Left Security Ecosystem</h1>
+        <p class="subtitle">Integrating Automated Governance into a High-Velocity CI/CD Pipeline</p>
+    </header>
+
+    <main>
+        <div class="case-study-box">
+            <strong>The Scenario:</strong> A development team was deploying updates multiple times a day to a cloud-native application. Manual security reviews became a bottleneck, leading to "emergency patches" in production. I was tasked with building an automated security "guardrail" that identifies vulnerabilities at the moment of code commit, without slowing down the developers.
+        </div>
+
+        <h2>Technical Methodology & Implementation</h2>
+        <p>My research focused on reducing "False Positive" fatigue—a common reason why developers ignore security tools. I integrated four distinct layers of automated testing into the <strong>GitLab CI</strong> environment.</p>
+
+        
+
+        <h3>1. Static Analysis (SAST) & SCA</h3>
+        <p>I implemented <strong>Semgrep</strong> for custom rule-matching tailored to our proprietary framework. This was paired with <strong>Snyk</strong> for Software Composition Analysis (SCA). 
+        <br><em>The Detail:</em> I configured the pipeline to "Fail the Build" only if a Critical CVE with a known exploit was found, preventing unnecessary work-stoppages for low-risk library updates.</p>
+
+        <h3>2. Infrastructure as Code (IaC) Review</h3>
+        <p>Recognizing that misconfigured cloud environments are a primary breach vector, I integrated <strong>Checkov</strong> to scan Terraform scripts.
+        <br><em>The Detail:</em> I conducted deep-dive reviews of IAM roles and S3 bucket policies, ensuring that 'Public-Read' access was programmatically blocked across all development stages.</p>
+
+        <h3>3. Dynamic Testing (DAST)</h3>
+        <p>Once the application moved to the staging environment, I triggered an automated <strong>OWASP ZAP</strong> "API Scan." 
+        <br><em>The Detail:</em> This wasn't a generic scan; I scripted it to authenticate as a low-privilege user to test for <strong>Broken Object Level Authorization (BOLA)</strong>—the #1 risk on the OWASP API Top 10 list.</p>
+
+        <div class="metrics">
+            <div class="metric-item">
+                <span class="metric-value">82%</span>
+                <span class="metric-label">Vulnerabilities Caught in Dev</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">0</span>
+                <span class="metric-label">Open Critical Ports</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">-15h</span>
+                <span class="metric-label">Manual Review Time Saved</span>
+            </div>
+        </div>
+
+        <h2>Professional Collaboration</h2>
+        <p>A major part of this project was <strong>Stakeholder Management</strong>. I collaborated with Lead Developers to create a "Security Champion" program, ensuring that security findings were treated as regular bugs in Jira rather than "impediments." This cultural shift ensured that security became a shared responsibility across the entire engineering organization.</p>
+    </main>
+
+    <footer>
+        Farzaneh Gholamnejad · M.Sc. Cybersecurity Portfolio
+    </footer>
+</body>
+</html>

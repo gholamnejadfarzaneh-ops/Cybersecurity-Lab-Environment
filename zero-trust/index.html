@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Trust Case Study | Farzaneh G.</title>
+    <style>
+        :root { --accent: #EDAB9D; --text: #1a1a1a; --secondary: #666; }
+        body { 
+            font-family: -apple-system, "Inter", sans-serif; 
+            line-height: 1.7; color: var(--text); max-width: 750px; 
+            margin: 0 auto; padding: 4rem 2rem; 
+        }
+        nav { margin-bottom: 3rem; }
+        nav a { text-decoration: none; color: var(--accent); font-size: 0.9rem; font-weight: 500; }
+        h1 { font-size: 2rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--secondary); margin-bottom: 3rem; font-style: italic; }
+        h2 { font-size: 1.2rem; margin-top: 2.5rem; border-left: 3px solid var(--accent); padding-left: 15px; }
+        .tech-stack { 
+            background: #fafafa; border: 1px solid #eee; padding: 1.5rem; 
+            border-radius: 4px; font-family: monospace; font-size: 0.85rem; margin: 2rem 0;
+        }
+        footer { margin-top: 5rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #eee; padding-top: 2rem; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="/">← Return to Portfolio</a></nav>
+
+    <header>
+        <h1>Zero Trust Ingress Architecture</h1>
+        <p class="subtitle">Securing an Edge Node without Inbound Firewall Exceptions</p>
+    </header>
+
+    <main>
+        <p>This project demonstrates a production-grade <strong>Zero Trust Network Access (ZTNA)</strong> implementation. The goal was to host a web-facing portfolio on physical hardware (ThinkPad T480) while maintaining a strict "Never Trust, Always Verify" security posture.</p>
+
+        <div class="tech-stack">
+            <strong>Deployment Stack:</strong><br>
+            • OS: Ubuntu 22.04 LTS (Hardened)<br>
+            • Web Server: Nginx (Reverse Proxy)<br>
+            • Connectivity: Cloudflare Tunnel (cloudflared)<br>
+            • DNS: Secured CNAME Flattening
+        </div>
+
+        <h2>Architectural Advantage</h2>
+        <p>Traditional hosting requires <strong>Port Forwarding</strong>, which opens a direct hole in the network firewall and exposes the origin IP. In this architecture, I utilized an outbound-only <strong>Cloudflare Tunnel</strong>.</p>
+        
+        
+
+        <p>By establishing a persistent encrypted connection to the Cloudflare Edge, the server remains completely "dark" to the public internet. Attacks like <strong>DDoS</strong> and <strong>Direct-to-IP port scanning</strong> are mitigated because the origin IP is never broadcasted.</p>
+
+        <h2>Governance & Compliance</h2>
+        <p>From a GRC perspective, this setup satisfies the principle of <strong>Least Privilege</strong>. Access is restricted at the edge, and the attack surface is minimized to a single outbound daemon. This aligns with modern NIST 800-207 standards for Zero Trust environments.</p>
+    </main>
+
+    <footer>
+        Farzaneh Gholamnejad · M.Sc. Cybersecurity Portfolio
+    </footer>
+
+</body>
+</html>

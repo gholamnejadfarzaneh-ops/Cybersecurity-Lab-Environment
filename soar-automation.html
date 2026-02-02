@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAR Automation | Farzaneh G.</title>
+    <style>
+        :root { --accent: #EDAB9D; --text: #1a1a1a; --bg: #ffffff; }
+        body { font-family: "Didot", serif; line-height: 1.6; color: var(--text); max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
+        .back-link { font-family: "Inter", sans-serif; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2rem; text-decoration: none; color: var(--accent); display: block; margin-bottom: 3rem; }
+        h1 { font-size: 2.5rem; font-weight: 400; margin-bottom: 1rem; }
+        .meta { font-family: "Inter", sans-serif; font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 3rem; }
+        h2 { font-size: 1.5rem; margin: 2rem 0 1rem; font-weight: 400; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.5rem; font-family: "Inter", sans-serif; font-size: 0.95rem; color: #444; }
+        code { background: #f9f9f9; padding: 1rem; display: block; border-left: 3px solid var(--accent); font-family: "SF Mono", monospace; font-size: 0.85rem; overflow-x: auto; margin: 1.5rem 0; }
+        .highlight { color: var(--accent); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <a href="/" class="back-link">← Return to Archives</a>
+
+    <header>
+        <h1>Automated Threat Triage with Python</h1>
+        <div class="meta">Domain: SOAR & Operations // Tools: Python, Tshark, Linux</div>
+    </header>
+
+    <section>
+        <h2>The Objective</h2>
+        <p>This project simulates a SOC workflow where raw network traffic is automatically ingested and analyzed to detect potential <span class="highlight">Denial of Service (DoS)</span> or network scanning attempts. This mimics a SOAR playbook that reduces manual triage time.</p>
+        
+        
+
+        <h2>1. Ingestion & Transformation</h2>
+        <p>Using <code>tshark</code>, raw <code>.pcap</code> data is converted into a structured CSV format, isolating the source IP addresses for lightweight processing.</p>
+        <code>tshark -r traffic.pcap -T fields -e ip.src -E separator=, > traffic.csv</code>
+
+        <h2>2. Detection Logic (Python)</h2>
+        <p>I developed this script to perform frequency analysis on the ingested logs. It flags any IP exceeding a specific threshold as a security alert.</p>
+        
+        <code>
+import csv
+from collections import Counter
+
+# Threshold for suspicious volume
+THRESHOLD = 30
+
+def analyze():
+    with open('traffic.csv', 'r') as f:
+        counts = Counter(row[0] for row in csv.reader(f) if row)
+        for ip, count in counts.items():
+            if count > THRESHOLD:
+                print(f"[!] ALERT: Suspicious activity from {ip}")
+
+analyze()
+        </code>
+
+        <h2>Business Impact</h2>
+        <p>By automating the identification of anomalous traffic, the <strong>Mean Time to Detect (MTTD)</strong> is reduced from minutes to seconds. In a consulting context for <strong>Deloitte</strong>, this demonstrates an ability to translate raw technical data into actionable security intelligence.</p>
+    </section>
+
+    <footer style="margin-top: 5rem; font-family: 'Inter', sans-serif; font-size: 0.6rem; color: #ccc; text-transform: uppercase;">
+        Project Lab Node // Farzaneh Gholamnejad
+    </footer>
+
+</body>
+</html>
