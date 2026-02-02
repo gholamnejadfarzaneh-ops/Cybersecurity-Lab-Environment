@@ -26,3 +26,6 @@ This project demonstrates the implementation of a secure web architecture hosted
 - [ ] Centralized Logging: Prometheus & Grafana Integration
 ## System Administration Best Practices
 Privilege Management: > Access to the /var/www/html directory was reconfigured from root:root to user:user. This mitigates the risk of Privilege Escalation vulnerabilities. By avoiding the use of the su (Switch User) command and utilizing sudo only when necessary, the lab adheres to the Principle of Least Privilege (PoLP).
+#sudo chown -R user:user /var/www/html
+Why? Normally, /var/www/html belongs to root. If you run Git as root, every file you create will also belong to root. This makes it very difficult to edit files later with your normal account. By taking ownership now, you make your workflow smooth and follow Best Practices for local development servers.
+
