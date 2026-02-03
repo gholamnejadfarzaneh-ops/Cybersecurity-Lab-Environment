@@ -4,7 +4,7 @@ Welcome to my live security lab documentation. This repository tracks the techni
 
 ## 📂 Documentation Modules
 * **[Infrastructure & Hardening](./docs/infrastructure-hardening/README.md)**: Details on T480 setup, Cloudflare Tunnels, and Linux security.
-* **[Accountability & AAA Framework](./docs/accountability-git/README.md)**: Documentation on Git digital signatures, non-repudiation, and audit trails.
+* **[Accountability & AAA Framework](docs/accountability-git/README.md)**: Documentation on Git digital signatures, non-repudiation, and audit trails.
 * **[SOAR Automation](./soar-automation.html)**: Python logic for network threat detection.
 * # Cybersecurity-Lab-Environment
 # Project: Hardened Security Lab & Portfolio Node
