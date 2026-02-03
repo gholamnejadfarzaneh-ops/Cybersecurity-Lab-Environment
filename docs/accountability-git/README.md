@@ -15,3 +15,19 @@ To ensure accountability, the local Git environment is configured with a unique 
 # Configuration of the digital signature
 git config --global user.email "...@gmail.com"
 git config --global user.name "Farzaneh Gholamnejad"
+## Troubleshooting: Authentication Failure Handling
+
+During the Git integration phase, a `401 Unauthorized` error was encountered. This served as a practical exercise in **Authentication Failure Handling**.
+
+### The "Handshake" Reset Protocol
+If the connection between the local node and the remote repository becomes desynchronized or invalid, the following reset protocol is utilized to re-establish a secure link:
+
+```bash
+# 1. Terminate the existing remote link (the "handshake")
+git remote remove origin
+
+# 2. Re-establish the link using a Personal Access Token (PAT) for identity verification
+git remote add origin https://<YOUR_TOKEN_HERE>@[github.com/gholamnejadfarzaneh-ops/Cybersecurity-Lab-Environment.git](https://github.com/gholamnejadfarzaneh-ops/Cybersecurity-Lab-Environment.git)
+
+# 3. Synchronize the local 'main' branch with the remote repository
+git push -u origin main
