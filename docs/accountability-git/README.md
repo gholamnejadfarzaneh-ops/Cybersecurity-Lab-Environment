@@ -13,5 +13,5 @@ To ensure accountability, the local Git environment is configured with a unique 
 
 ```bash
 # Configuration of the digital signature
-git config --global user.email "gholamnedfazrzaneh@gmail.com"
+git config --global user.email "...@gmail.com"
 git config --global user.name "Farzaneh Gholamnejad"
