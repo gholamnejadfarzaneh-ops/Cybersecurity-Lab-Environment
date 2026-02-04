@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOAR Playbook | Farzaneh Gholamnejad</title>
+    <title>Architecting a Custom SOAR Playbook | Farzaneh Gholamnejad</title>
     <style>
         :root { --accent: #EDAB9D; --text-main: #1a1a1a; --bg: #ffffff; }
-        body { font-family: "Didot", serif; background: var(--bg); color: var(--text-main); padding: 2rem; line-height: 1.8; max-width: 800px; margin: auto; }
+        body { font-family: "Didot", serif; background: var(--bg); color: var(--text-main); padding: 2rem; line-height: 1.8; max-width: 900px; margin: auto; }
         .back-link { text-decoration: none; color: var(--accent); font-family: "Inter", sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; }
-        h1 { font-size: 2.5rem; font-weight: 400; margin: 2rem 0 1rem; }
+        h1 { font-size: 2.8rem; font-weight: 400; margin: 2rem 0 0.5rem; line-height: 1.1; }
+        h2 { font-size: 1.2rem; color: var(--accent); font-weight: 400; margin-bottom: 3rem; font-family: "Inter", sans-serif; }
+        h3 { font-size: 1.5rem; margin-top: 3rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
         .metadata { font-family: "Inter", sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1rem; color: #707070; margin-bottom: 3rem; }
-        .content-block { margin-bottom: 2rem; }
-        code { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
-        pre { background: #1a1a1a; color: #f4f4f4; padding: 1.5rem; overflow-x: auto; border-radius: 8px; font-size: 0.9rem; }
+        .diagram-placeholder { background: #f9f9f9; border: 1px dashed #ccc; padding: 4rem; text-align: center; margin: 2rem 0; font-family: "Inter", sans-serif; color: #707070; }
+        .pro-note { background: #fff5f2; border-left: 4px solid var(--accent); padding: 1.5rem; margin: 2rem 0; font-style: italic; }
     </style>
 </head>
 <body>
     <a href="/" class="back-link">← Return to Portfolio</a>
     
-    <h1>SOAR Playbook: Automated URL Triage</h1>
-    <div class="metadata">Security Automation / Python / VirusTotal API</div>
+    <h1>Architecting a Custom SOAR Playbook: Automated Threat Intelligence & Triage</h1>
+    <h2>Reducing MTTR through Python-driven API Enrichment and Logic-Based Filtering</h2>
 
-    <div class="content-block">
-        <p>In modern Security Operations Centers (SOC), speed is a defensive necessity. This project demonstrates a <strong>SOAR (Security Orchestration, Automation, and Response)</strong> playbook designed to automate the initial triage of suspicious URLs.</p>
+    <div class="metadata">Cybersecurity Automation / Python / GRC Strategy</div>
+
+    <h3>1. The Executive Summary</h3>
+    <p>In a modern SOC, 'Alert Fatigue' is the primary enemy of efficiency. This project demonstrates a modular approach to automating the initial triage of suspicious indicators, transforming raw URL data into actionable intelligence without manual intervention.</p>
+
+    <h3>2. The Challenge: Signal vs. Noise</h3>
+    <p>Analysts often spend hours manually cross-referencing URLs against threat databases. My goal was to build a system that handles this 'Level 1' task programmatically, allowing human experts to focus on complex investigations.</p>
+
+    <h3>3. System Architecture & Workflow</h3>
+    <p>The solution is built on a Linux (Ubuntu) environment using a Python-based connector. The workflow handles everything from Base64 data normalization to stateful logging.</p>
+
+    <div class="diagram-placeholder">
+        
+    </div>
+    
+
+    <h3>4. Technical Implementation: The 'Smarter' Logic</h3>
+    <div class="pro-note">
+        "I deliberately avoided a binary 'Pass/Fail' logic. Instead, I implemented a Weighted Threshold. This allows the system to prioritize alerts where multiple vendors agree on the threat, while flagging 'edge cases' for human intervention, significantly reducing False Positives."
     </div>
 
-    <div class="content-block">
-        <h3>The Logic</h3>
-        <p>Using Python, the script interacts with the VirusTotal API to scan submitted URLs. Instead of a manual search, the playbook automatically categorizes the threat level based on engine detections.</p>
-    </div>
+    <h3>5. Security & Best Practices</h3>
+    <p>Implementation included strict secret management via <code>.gitignore</code> to protect CTI (Cyber Threat Intelligence) API keys and the use of isolated virtual environments to ensure system stability.</p>
 
-    <div class="content-block">
-        <h3>Code Snippet</h3>
-        <pre>
-import requests
-
-def triage_url(url_id, api_key):
-    headers = {"x-apikey": api_key}
-    response = requests.get(f"https://www.virustotal.com/api/v3/urls/{url_id}", headers=headers)
-    return response.json()
-        </pre>
-    </div>
+    <h3>6. Future Scalability</h3>
+    <p>The next iteration of this project involves containerizing the script using Docker to allow for cloud-native deployment within a CI/CD pipeline.</p>
 
     <footer>
-        <p style="font-size: 0.6rem; color: #ccc; margin-top: 5rem; text-align: center;">&copy; 2026 LAB NODE PROTOTYPE</p>
+        <p style="font-size: 0.6rem; color: #ccc; margin-top: 5rem; text-align: center;">&copy; 2026 Farzaneh Gholamnejad · Private Node T480</p>
     </footer>
 </body>
 </html>
