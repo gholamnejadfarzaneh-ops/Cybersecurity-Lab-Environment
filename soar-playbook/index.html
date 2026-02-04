@@ -29,14 +29,66 @@
 
     <h3>2. The Challenge: Signal vs. Noise</h3>
     <p>Analysts often spend hours manually cross-referencing URLs against threat databases. My goal was to build a system that handles this 'Level 1' task programmatically, allowing human experts to focus on complex investigations.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecting a Custom SOAR Playbook | Farzaneh Gholamnejad</title>
+    <style>
+        :root { --accent: #EDAB9D; --text-main: #1a1a1a; --bg: #ffffff; }
+        body { font-family: "Didot", serif; background: var(--bg); color: var(--text-main); padding: 2rem; line-height: 1.8; max-width: 900px; margin: auto; }
+        .back-link { text-decoration: none; color: var(--accent); font-family: "Inter", sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; }
+        h1 { font-size: 2.8rem; font-weight: 400; margin: 2rem 0 0.5rem; line-height: 1.1; }
+        h2 { font-size: 1.2rem; color: var(--accent); font-weight: 400; margin-bottom: 3rem; font-family: "Inter", sans-serif; }
+        h3 { font-size: 1.5rem; margin-top: 3rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+        .metadata { font-family: "Inter", sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1rem; color: #707070; margin-bottom: 3rem; }
+        
+        /* New Image Styling */
+        .diagram-container { 
+            text-align: center; 
+            margin: 3rem 0; 
+        }
+        .diagram-container img { 
+            width: 100%; 
+            max-width: 800px; 
+            height: auto; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+        }
+        .diagram-caption {
+            font-family: "Inter", sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: #707070;
+            margin-top: 1rem;
+        }
+
+        .pro-note { background: #fff5f2; border-left: 4px solid var(--accent); padding: 1.5rem; margin: 2rem 0; font-style: italic; }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Return to Portfolio</a>
+    
+    <h1>Architecting a Custom SOAR Playbook: Automated Threat Intelligence & Triage</h1>
+    <h2>Reducing MTTR through Python-driven API Enrichment and Logic-Based Filtering</h2>
+
+    <div class="metadata">Cybersecurity Automation / Python / GRC Strategy</div>
+
+    <h3>1. The Executive Summary</h3>
+    <p>In a modern SOC, 'Alert Fatigue' is the primary enemy of efficiency. This project demonstrates a modular approach to automating the initial triage of suspicious indicators, transforming raw URL data into actionable intelligence without manual intervention.</p>
+
+    <h3>2. The Challenge: Signal vs. Noise</h3>
+    <p>Analysts often spend hours manually cross-referencing URLs against threat databases. My goal was to build a system that handles this 'Level 1' task programmatically, allowing human experts to focus on complex investigations.</p>
 
     <h3>3. System Architecture & Workflow</h3>
     <p>The solution is built on a Linux (Ubuntu) environment using a Python-based connector. The workflow handles everything from Base64 data normalization to stateful logging.</p>
 
-    <div class="diagram-placeholder">
-        
+    <div class="diagram-container">
+        <img src="soar-logic.soar.png" alt="SOAR Triage Playbook Logic Diagram">
+        <p class="diagram-caption">Figure 1: Visual Logic Flow for Automated URL Triage</p>
     </div>
-    
 
     <h3>4. Technical Implementation: The 'Smarter' Logic</h3>
     <div class="pro-note">
