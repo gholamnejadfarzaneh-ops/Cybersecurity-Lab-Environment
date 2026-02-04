@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAR Playbook | Farzaneh Gholamnejad</title>
+    <style>
+        :root { --accent: #EDAB9D; --text-main: #1a1a1a; --bg: #ffffff; }
+        body { font-family: "Didot", serif; background: var(--bg); color: var(--text-main); padding: 2rem; line-height: 1.8; max-width: 800px; margin: auto; }
+        .back-link { text-decoration: none; color: var(--accent); font-family: "Inter", sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; }
+        h1 { font-size: 2.5rem; font-weight: 400; margin: 2rem 0 1rem; }
+        .metadata { font-family: "Inter", sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1rem; color: #707070; margin-bottom: 3rem; }
+        .content-block { margin-bottom: 2rem; }
+        code { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+        pre { background: #1a1a1a; color: #f4f4f4; padding: 1.5rem; overflow-x: auto; border-radius: 8px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Return to Portfolio</a>
+    
+    <h1>SOAR Playbook: Automated URL Triage</h1>
+    <div class="metadata">Security Automation / Python / VirusTotal API</div>
+
+    <div class="content-block">
+        <p>In modern Security Operations Centers (SOC), speed is a defensive necessity. This project demonstrates a <strong>SOAR (Security Orchestration, Automation, and Response)</strong> playbook designed to automate the initial triage of suspicious URLs.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>The Logic</h3>
+        <p>Using Python, the script interacts with the VirusTotal API to scan submitted URLs. Instead of a manual search, the playbook automatically categorizes the threat level based on engine detections.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>Code Snippet</h3>
+        <pre>
+import requests
+
+def triage_url(url_id, api_key):
+    headers = {"x-apikey": api_key}
+    response = requests.get(f"https://www.virustotal.com/api/v3/urls/{url_id}", headers=headers)
+    return response.json()
+        </pre>
+    </div>
+
+    <footer>
+        <p style="font-size: 0.6rem; color: #ccc; margin-top: 5rem; text-align: center;">&copy; 2026 LAB NODE PROTOTYPE</p>
+    </footer>
+</body>
+</html>
